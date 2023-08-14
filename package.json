@@ -1,0 +1,22 @@
+{
+  "name": "no_packages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbower493/no_packages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbower493/no_packages/issues"
+  },
+  "homepage": "https://github.com/jbower493/no_packages#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
