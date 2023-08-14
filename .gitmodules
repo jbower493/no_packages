@@ -1,0 +1,3 @@
+[submodule "libs/react_submodule"]
+	path = libs/react_submodule
+	url = https://github.com/jbower493/react_submodule
