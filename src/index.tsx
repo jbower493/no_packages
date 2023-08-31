@@ -54,13 +54,21 @@ const Effectiveness = () => {
     );
 };
 
-const App = () => (
-    <section>
-        <h1>Hello</h1>
-        <Namer />
-        <Counter />
-        <Effectiveness />
-    </section>
-);
+const App = () => {
+    const [isCounterShowing, setIsCounterShowing] = myReact.useState(false);
+
+    return (
+        <section>
+            <h1>Hello</h1>
+            <Namer />
+            <button onclick={() => setIsCounterShowing(!isCounterShowing)}>
+                Toggle counter
+            </button>
+            {/* TODO: currently this breaks the hooks mechanism, because a different amount of hooks are being rendered. I still don't quite understand how this works */}
+            {isCounterShowing && <Counter />}
+            <Effectiveness />
+        </section>
+    );
+};
 
 render(<App />, document.getElementById("app")!);

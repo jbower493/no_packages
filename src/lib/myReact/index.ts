@@ -23,6 +23,7 @@ const myReact = (function () {
         // TODO: type this
         ...children: any[]
     ): MyReactElement {
+        console.log("props: ", props);
         // If its the root render, capture the args for use in ReactDOM.reRender
         if (!initialRender) {
             initialRender = { tag, props, children };

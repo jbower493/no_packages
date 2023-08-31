@@ -36,16 +36,18 @@ export function render(element, container) {
     if (["string", "number"].includes(typeof element)) {
         return container.appendChild(document.createTextNode(element));
     }
-    const _a = element.props, { children } = _a, restProps = __rest(_a, ["children"]);
-    // Pass all props to dom element
-    Object.keys(restProps).forEach((prop) => {
-        if (typeof restProps[prop] === "function") {
-            domElement.addEventListener(mapAttributeNameToEventName(prop), restProps[prop]);
-        }
-        domElement.setAttribute(prop, restProps[prop]);
-    });
-    // Recursively render children
-    children.forEach((child) => render(child, domElement));
+    if (element.props) {
+        const _a = element.props, { children } = _a, restProps = __rest(_a, ["children"]);
+        // Pass all props to dom element
+        Object.keys(restProps).forEach((prop) => {
+            if (typeof restProps[prop] === "function") {
+                domElement.addEventListener(mapAttributeNameToEventName(prop), restProps[prop]);
+            }
+            domElement.setAttribute(prop, restProps[prop]);
+        });
+        // Recursively render children
+        children.forEach((child) => render(child, domElement));
+    }
     container.appendChild(domElement);
 }
 // TODO: this is causing a circular dependency at the moment

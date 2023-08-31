@@ -34,21 +34,23 @@ export function render(element: any, container: HTMLElement) {
         return container.appendChild(document.createTextNode(element));
     }
 
-    const { children, ...restProps } = element.props;
+    if (element.props) {
+        const { children, ...restProps } = element.props;
 
-    // Pass all props to dom element
-    Object.keys(restProps).forEach((prop) => {
-        if (typeof restProps[prop] === "function") {
-            domElement.addEventListener(
-                mapAttributeNameToEventName(prop),
-                restProps[prop]
-            );
-        }
-        domElement.setAttribute(prop, restProps[prop]);
-    });
+        // Pass all props to dom element
+        Object.keys(restProps).forEach((prop) => {
+            if (typeof restProps[prop] === "function") {
+                domElement.addEventListener(
+                    mapAttributeNameToEventName(prop),
+                    restProps[prop]
+                );
+            }
+            domElement.setAttribute(prop, restProps[prop]);
+        });
 
-    // Recursively render children
-    children.forEach((child: any) => render(child, domElement));
+        // Recursively render children
+        children.forEach((child: any) => render(child, domElement));
+    }
 
     container.appendChild(domElement);
 }

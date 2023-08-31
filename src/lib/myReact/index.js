@@ -18,6 +18,7 @@ const myReact = (function () {
     function createElement(tag, props, 
     // TODO: type this
     ...children) {
+        console.log("props: ", props);
         // If its the root render, capture the args for use in ReactDOM.reRender
         if (!initialRender) {
             initialRender = { tag, props, children };

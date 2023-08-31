@@ -38,9 +38,13 @@ const Effectiveness = () => {
             "Irrelevance: ",
             irrelevance)));
 };
-const App = () => (myReact.createElement("section", null,
-    myReact.createElement("h1", null, "Hello"),
-    myReact.createElement(Namer, null),
-    myReact.createElement(Counter, null),
-    myReact.createElement(Effectiveness, null)));
+const App = () => {
+    const [isCounterShowing, setIsCounterShowing] = myReact.useState(false);
+    return (myReact.createElement("section", null,
+        myReact.createElement("h1", null, "Hello"),
+        myReact.createElement(Namer, null),
+        myReact.createElement("button", { onclick: () => setIsCounterShowing(!isCounterShowing) }, "Toggle counter"),
+        isCounterShowing && myReact.createElement(Counter, null),
+        myReact.createElement(Effectiveness, null)));
+};
 render(myReact.createElement(App, null), document.getElementById("app"));
